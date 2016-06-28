@@ -14,7 +14,7 @@ We know how to write CQL, so let's send some to our database:
 
     import records
 
-    db = records.Database('postgres://...')
+    db = records.Database(hosts="10.2.3.4,10.2.3.5", username='cassandra', password='cassandra')
     rows = db.query('select * from active_users')    # or db.query_file('cqls/active-users.cql')
 
 
@@ -49,7 +49,6 @@ Other options include ``rows.as_dict()`` and ``rows.as_dict(ordered=True)``.
 ----------
 
 - Iterated rows are cached for future reference.
-- ``$DATABASE_URL`` environment variable support.
 - Convenience ``Database.get_table_names`` method.
 - Command-line `cassanrda-records` tool for exporting queries.
 - Safe parameterization: ``Database.query('life=:everything', everything=42)``
